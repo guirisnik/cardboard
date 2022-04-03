@@ -21,26 +21,6 @@ type Column = {
   items: Item[];
 };
 
-const generateItems = (length: number): Item[] =>
-  Array.from({ length }, (_, k) => ({ id: `item${k}`, content: `Item ${k}` }));
-
-const reorder = (
-  sourceColumn: Item[],
-  destinationColumn: Item[],
-  sourceIndex: number,
-  destinationIndex: number
-): Item[][] => {
-  const sourceColumnCopy = Array.from(sourceColumn);
-  const destinationColumnCopy = Array.from(destinationColumn);
-
-  destinationColumnCopy.splice(
-    destinationIndex,
-    0,
-    ...sourceColumnCopy.splice(sourceIndex, 1)
-  );
-  return [sourceColumnCopy, destinationColumnCopy];
-};
-
 function MultiColumnBoard() {
   const [columns, setColumns] = useState<Column[]>([]);
 
